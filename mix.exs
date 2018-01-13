@@ -25,6 +25,7 @@ defmodule Shoutcast.Mixfile do
   defp deps do
     [
       {:hackney, "~> 1.10"},
+      {:ex_doc, ">= 0.0.0", only: :dev},
     ]
   end
 
