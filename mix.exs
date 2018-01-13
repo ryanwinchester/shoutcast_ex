@@ -7,7 +7,10 @@ defmodule Shoutcast.Mixfile do
       version: "0.1.0",
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
-      deps: deps()
+      package: package(),
+      description: description(),
+      deps: deps(),
+      source_url: "https://github.com/ryanwinchester/shoutcast_ex",
     ]
   end
 
@@ -22,6 +25,18 @@ defmodule Shoutcast.Mixfile do
   defp deps do
     [
       {:hackney, "~> 1.10"},
+    ]
+  end
+
+  defp description do
+    "Shoutcast meta data"
+  end
+
+  defp package do
+    [
+      maintainers: ["Ryan Winchester"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/ryanwinchester/shoutcast_ex"}
     ]
   end
 end
