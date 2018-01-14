@@ -1,11 +1,12 @@
 # Shoutcast
 
-**TODO: Add description**
+[https://hexdocs.pm/shoutcast](https://hexdocs.pm/shoutcast)
+
+Read meta data from a shoutcast stream.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `shoutcast` to your list of dependencies in `mix.exs`:
+in `mix.exs`
 
 ```elixir
 def deps do
@@ -15,7 +16,9 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/shoutcast](https://hexdocs.pm/shoutcast).
+## Usage
 
+```elixir
+iex> Shoutcast.read_meta("http://ice1.somafm.com/lush-128-mp3")
+{:ok, %Meta{}}
+```
