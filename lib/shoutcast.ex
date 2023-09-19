@@ -14,15 +14,24 @@ defmodule Shoutcast do
   @doc """
   Get the meta data from a shoutcast stream.
 
+  ## Options
+
+    Hackney options passed to the request.
+
   ## Example:
 
       iex> Shoutcast.read_meta("http://ice1.somafm.com/lush-128-mp3")
       {:ok, %Meta{}}
 
+      iex> Shoutcast.read_meta("http://ice1.somafm.com/lush-128-mp3", [follow_redirect: true])
+      {:ok, %Meta{}}
+
   """
-  @spec read_meta(binary) :: {:ok, Meta.t}
-  def read_meta(url) do
-    {:ok, _status, headers, ref} = :hackney.get(url, [{'Icy-Metadata', '1'}], "", [])
+  @spec read_meta(binary, opts :: Keyword.t()) :: {:ok, Meta.t}
+  def read_meta(url, opts \\ []) do
+    hackney_opts = Keyword.merge([], opts)
+
+    {:ok, _status, headers, ref} = :hackney.get(url, [{'Icy-Metadata', '1'}], "", hackney_opts)
 
     offset = get_offset(headers)
 
