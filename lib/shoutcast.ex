@@ -29,9 +29,7 @@ defmodule Shoutcast do
   """
   @spec read_meta(binary, opts :: Keyword.t()) :: {:ok, Meta.t}
   def read_meta(url, opts \\ []) do
-    hackney_opts = Keyword.merge([], opts)
-
-    {:ok, _status, headers, ref} = :hackney.get(url, [{'Icy-Metadata', '1'}], "", hackney_opts)
+    {:ok, _status, headers, ref} = :hackney.get(url, [{'Icy-Metadata', '1'}], "", opts)
 
     offset = get_offset(headers)
 
